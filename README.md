@@ -1,2 +1,2 @@
-# android
-The naming is temporal till we will have a better one
+# ZachenAway
+Andorid project written with Kotlin above Android Studio
