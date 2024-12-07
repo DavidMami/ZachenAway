@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.zachenaway"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -56,6 +56,10 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.room.common)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.androidx.navigation.common.ktx)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,5 +67,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation(libs.picasso)
 }
