@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="register_button_color">#1E87E9</color>
+    <color name="login_button_color">#1E87E9</color>
 </resources>
