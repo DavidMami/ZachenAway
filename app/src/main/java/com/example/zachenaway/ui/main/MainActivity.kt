@@ -1,4 +1,4 @@
-package com.example.zachenaway
+package com.example.zachenaway.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
