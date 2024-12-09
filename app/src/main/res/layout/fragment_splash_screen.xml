@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom">
+    android:layout_gravity="bottom"
+    tools:context=".ui.auth.SplashScreenFragment">
 
-    <LinearLayout
+<LinearLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
         android:layout_height="130dp"
@@ -16,7 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
 
         <Button
             android:id="@+id/loginButton"
@@ -32,7 +32,7 @@
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/createAnAccountButton"
+            android:id="@+id/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"

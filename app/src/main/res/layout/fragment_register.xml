@@ -5,7 +5,8 @@
     android:id="@+id/register_fragment_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:background="@android:color/transparent"
+    tools:context="ui.auth.RegisterFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -181,5 +182,23 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/register_fragment_layout"
+        app:layout_constraintEnd_toEndOf="@+id/register_fragment_layout"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/register_fragment_layout"
+        app:layout_constraintTop_toTopOf="@+id/register_fragment_layout"
+        app:layout_constraintVertical_bias="0.50"
+        app:showAnimationBehavior="none" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
