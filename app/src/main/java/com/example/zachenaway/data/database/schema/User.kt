@@ -1,4 +1,4 @@
-package com.example.zachenaway.data.model.schema
+package com.example.zachenaway.data.database.schema
 
 import android.widget.EditText
 import androidx.room.Entity
