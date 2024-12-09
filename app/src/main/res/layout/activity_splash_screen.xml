@@ -13,7 +13,7 @@
         android:layout_width="365dp"
         android:layout_height="134dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="24dp"
         android:text="ZachenAway"
         android:textAlignment="center"
         android:textColor="@color/login_button_color"
@@ -24,6 +24,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/loginHomePageFragment"
+        android:name="com.example.zachenaway.ui.auth.RegisterFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:foregroundGravity="bottom"

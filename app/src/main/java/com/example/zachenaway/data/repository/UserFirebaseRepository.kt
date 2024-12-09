@@ -1,7 +1,7 @@
 package com.example.zachenaway.data.repository
 
 import com.example.zachenaway.data.Listener
-import com.example.zachenaway.data.model.schema.User
+import com.example.zachenaway.data.database.schema.User
 
 class UserFirebaseRepository : FirebaseRepository() {
 

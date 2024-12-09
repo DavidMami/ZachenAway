@@ -26,14 +26,14 @@ class SplashScreenFragment : Fragment() {
         val loginBtn: Button = view.findViewById(R.id.loginButton)
         val registerBtn: Button = view.findViewById(R.id.registerButton)
 
-        val fragmentManager = AuthFragmentManager(requireActivity())
+        val authFragmentManager = AuthFragmentManager(requireActivity())
 
         loginBtn.setOnClickListener {
-            fragmentManager.changeFragment(LoginFragment::class.java)
+            authFragmentManager.changeFragment(LoginFragment::class.java)
         }
 
         registerBtn.setOnClickListener {
-            fragmentManager.changeFragment(RegisterFragment::class.java)
+            authFragmentManager.changeFragment(RegisterFragment::class.java)
         }
 
         return view
