@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ZachenAway</string>
+
+    <string name="home_page_title">home page</string>
+    <string name="create_post_title">create post</string>
+    <string name="user_page_title">user page</string>
 </resources>
