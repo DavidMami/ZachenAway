@@ -10,4 +10,10 @@
 
     <color name="register_button_color">#1E87E9</color>
     <color name="login_button_color">#1E87E9</color>
+
+    <color name="skyBlue">#FF3700B3</color>
+    <color name="menuBackground">#FF6200EE</color>
+
+    <color name="iconNotClicked">#D8D8D8</color>
+    <color name="iconClicked">#D8D8D8</color>
 </resources>
