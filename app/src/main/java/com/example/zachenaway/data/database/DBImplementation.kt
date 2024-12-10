@@ -1,6 +1,7 @@
 package com.example.zachenaway.data.database
 
 import com.example.zachenaway.data.database.dao.UserDao
+import com.example.zachenaway.data.database.dao.PostDao
 
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -23,5 +24,9 @@ class DBImplementation private constructor() {
 
     fun getUserDao(): UserDao {
         return localDB.userDao()
+    }
+
+    fun getPostDao(): PostDao {
+        return localDB.postDao()
     }
 }

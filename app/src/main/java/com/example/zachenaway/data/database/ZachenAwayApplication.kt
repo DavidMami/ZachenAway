@@ -1,4 +1,4 @@
-package com.example.zachenaway.ui.main
+package com.example.zachenaway.data.database
 
 import android.app.Application
 import android.content.Context
