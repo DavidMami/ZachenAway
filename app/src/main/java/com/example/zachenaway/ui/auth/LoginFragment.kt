@@ -1,6 +1,6 @@
 package com.example.zachenaway.ui.auth
 
-import com.example.zachenaway.ui.main.ZachenAwayApplication
+import com.example.zachenaway.data.database.ZachenAwayApplication
 import com.example.zachenaway.ui.main.MainActivity
 import com.example.zachenaway.data.repository.AuthRepository
 import com.example.zachenaway.data.model.UserModel

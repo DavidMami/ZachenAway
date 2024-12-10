@@ -14,6 +14,9 @@
     <color name="skyBlue">#FF3700B3</color>
     <color name="menuBackground">#FF6200EE</color>
 
+    <color name="checked_color">#181717</color>
+    <color name="unchecked_color">#555457</color>
+
     <color name="iconNotClicked">#D8D8D8</color>
     <color name="iconClicked">#D8D8D8</color>
 </resources>

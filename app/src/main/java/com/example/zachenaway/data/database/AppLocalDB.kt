@@ -6,7 +6,6 @@ import com.example.zachenaway.data.database.schema.User
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.zachenaway.ui.main.ZachenAwayApplication
 
 @Database(entities = [User::class], version = 103, exportSchema = true)
 abstract class AppLocalDbRepository : RoomDatabase() {

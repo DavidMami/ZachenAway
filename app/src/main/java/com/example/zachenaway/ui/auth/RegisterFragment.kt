@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import com.example.zachenaway.data.model.UserModel
 import com.example.zachenaway.data.repository.AuthRepository
 import com.example.zachenaway.data.repository.UserFirebaseRepository
-import com.example.zachenaway.ui.main.ZachenAwayApplication
+import com.example.zachenaway.data.database.ZachenAwayApplication
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class RegisterFragment : Fragment() {
