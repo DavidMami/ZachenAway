@@ -2,6 +2,24 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userPageFragment">
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.zachenaway.ui.menu.HomePageFragment"
+        android:label="ZachenAway home page"
+        tools:layout="@layout/fragment_home_page" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/userPageFragment"
+        android:name="com.example.zachenaway.ui.menu.UserPageFragment"
+        android:label="ZachenAway User page"
+        tools:layout="@layout/fragment_user_page" >
+        <argument
+            android:name="user"
+            app:argType="com.example.zachenaway.data.database.schema.User" />
+    </fragment>
 
 </navigation>

@@ -3,10 +3,16 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
     id("com.google.devtools.ksp")
 }
 
 android {
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     namespace = "com.example.zachenaway"
     compileSdk = 35
 
@@ -58,8 +64,9 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
-    implementation(libs.firebase.auth.ktx)
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.room.common)
     implementation(libs.firebase.storage.ktx)
     implementation(libs.androidx.navigation.common.ktx)
