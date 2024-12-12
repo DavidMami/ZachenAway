@@ -13,6 +13,7 @@ data class User(
     var email: String? = null,
     var firstName: String? = null,
     var lastName: String? = null,
+    var phone: String? = null,
     var imageUrl: String? = null
 ) : Serializable {
 
@@ -22,6 +23,7 @@ data class User(
         const val EMAIL = "email"
         const val FIRST_NAME = "firstName"
         const val LAST_NAME = "lastName"
+        const val PHONE = "phone"
         const val IMAGE_URL = "imageUrl"
 
         fun fromJson(json: Map<String, Any?>): User {
@@ -30,6 +32,7 @@ data class User(
                 email = json[EMAIL] as? String,
                 firstName = json[FIRST_NAME] as? String,
                 lastName = json[LAST_NAME] as? String,
+                phone = json[PHONE] as? String,
                 imageUrl = json[IMAGE_URL] as? String
             )
         }
@@ -40,12 +43,14 @@ data class User(
         email: EditText,
         firstName: EditText,
         lastName: EditText,
+        phone: EditText,
         imageUrl: String?
     ) : this(
         id,
         email.text.toString(),
         firstName.text.toString(),
         lastName.text.toString(),
+        phone.text.toString(),
         imageUrl
     )
 
@@ -54,6 +59,7 @@ data class User(
         email = user.email,
         firstName = user.firstName,
         lastName = user.lastName,
+        phone = user.phone,
         imageUrl = user.imageUrl
     )
 
@@ -62,6 +68,7 @@ data class User(
         email = user.email,
         firstName = user.displayName,
         lastName = user.displayName,
+        phone = user.phoneNumber,
         imageUrl = ""
     )
 
@@ -73,6 +80,7 @@ data class User(
             FIRST_NAME to firstName,
             LAST_NAME to lastName,
             EMAIL to email,
+            PHONE to phone,
             IMAGE_URL to imageUrl
         )
     }

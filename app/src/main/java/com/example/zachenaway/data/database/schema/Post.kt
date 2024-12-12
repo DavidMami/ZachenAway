@@ -14,7 +14,6 @@ data class Post(
     var description: String = "",
     var category: String = "",
     var userId: String = "",
-    var phoneNumber: String = "",
     var image: String = "",
 ) : Serializable {
 
@@ -24,7 +23,6 @@ data class Post(
         description = obj["description"] as? String ?: "",
         category = obj["category"] as? String ?: "",
         userId = obj["userId"] as? String ?: "",
-        phoneNumber = obj["phoneNumber"] as? String ?: "",
         image = obj["image"] as? String ?: "",
     )
 
@@ -33,7 +31,6 @@ data class Post(
         location: EditText,
         description: EditText,
         category: String,
-        phoneNumber: EditText,
         userId: String,
         image: String,
     ) : this(
@@ -42,7 +39,6 @@ data class Post(
         description = description.text.toString(),
         category = category,
         userId = userId,
-        phoneNumber = phoneNumber.text.toString(),
         image = image,
     )
 
@@ -53,7 +49,6 @@ data class Post(
             "description" to description,
             "category" to category,
             "userId" to userId,
-            "phoneNumber" to phoneNumber,
             "image" to image,
         )
     }
