@@ -9,7 +9,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [User::class, Post::class], version = 103, exportSchema = true)
+@Database(entities = [User::class, Post::class], version = 104, exportSchema = true)
 abstract class AppLocalDbRepository : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun postDao(): PostDao

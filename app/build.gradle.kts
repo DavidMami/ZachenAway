@@ -7,6 +7,11 @@ plugins {
 }
 
 android {
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     namespace = "com.example.zachenaway"
     compileSdk = 35
 
