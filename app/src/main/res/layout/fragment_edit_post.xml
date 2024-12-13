@@ -147,7 +147,7 @@
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
-                android:text="Edit"
+                android:text="Update"
                 android:textColor="@color/icon_color"
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp"
