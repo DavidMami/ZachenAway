@@ -77,7 +77,7 @@ class CreatePostFragment : Fragment() {
         with(binding) {
             return postLocationEditText.text.toString().isNotEmpty() &&
                     postDescriptionEditText.text.toString().isNotEmpty() &&
-                    postCategoryAutoCompleteTextView.text.toString().isNotEmpty()
+                    postCategoryEditText.text.toString().isNotEmpty()
         }
     }
 
@@ -89,7 +89,7 @@ class CreatePostFragment : Fragment() {
                 id = UUID.randomUUID().toString(),
                 location = binding.postLocationEditText.text.toString(),
                 description = binding.postDescriptionEditText.text.toString(),
-                category = binding.postCategoryAutoCompleteTextView.text.toString(),
+                category = binding.postCategoryEditText.text.toString(),
                 userId = it,
                 image = "",
             )
