@@ -19,10 +19,6 @@ class CreatePostViewModel : ViewModel() {
         }
     }
 
-    fun getUser(): LiveData<User?>? {
-        return user;
-    }
-
     fun addPost(post: Post, postImageBitmap: Bitmap) {
         PostModel.instance.uploadImage(post.id, postImageBitmap) { url ->
             setPostImage(post, url)

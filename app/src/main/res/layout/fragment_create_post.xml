@@ -1,159 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/createPostPageSpinner"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.50"
-            app:showAnimationBehavior="none" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/page_title_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:text="Create Post"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/createPostPageSpinner"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.50"
+                app:showAnimationBehavior="none" />
 
-        <ImageView
-            android:id="@+id/post_image_imageView"
-            android:layout_width="238dp"
-            android:layout_height="218dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/post_image_placeholder"
-            app:layout_constraintDimensionRatio="w,1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/page_title_textView" />
+            <TextView
+                android:id="@+id/page_title_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Create Post"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.482"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/upload_post_imageButton"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/gallery_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/post_image_imageView"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-            tools:layout_editor_absoluteY="226dp" />
+            <ImageView
+                android:id="@+id/postImageImageView"
+                android:layout_width="238dp"
+                android:layout_height="218dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/post_image_placeholder"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/page_title_textView" />
 
-        <TextView
-            android:id="@+id/post_location_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="Location"
-            android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/post_location_editText"
-            app:layout_constraintStart_toStartOf="parent" />
+            <ImageButton
+                android:id="@+id/uploadPostImageButton"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gallery_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/postImageImageView"
+                tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteY="226dp" />
 
-        <EditText
-            android:id="@+id/post_location_editText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/post_location_textView"
-            app:layout_constraintTop_toBottomOf="@+id/post_image_imageView"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/postLocationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Location"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/postLocationEditText"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/post_description_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="Description"
-            android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/post_description_editText"
-            app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/postLocationEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/postLocationTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-        <EditText
-            android:id="@+id/post_description_editText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/post_description_textView"
-            app:layout_constraintTop_toBottomOf="@+id/post_location_editText" />
+            <TextView
+                android:id="@+id/postDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Description"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/postDescriptionEditText"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/post_category_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="Category"
-            android:textSize="18sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/post_category_autoCompleteTextView"
-            app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/postDescriptionEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/postDescriptionTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postLocationEditText" />
 
-        <AutoCompleteTextView
-            android:id="@+id/post_category_autoCompleteTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/post_category_textView"
-            app:layout_constraintTop_toBottomOf="@+id/post_description_textView" />
+            <TextView
+                android:id="@+id/postCategoryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Category"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/postCategoryAutoCompleteTextView"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/createPostButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="168dp"
-            android:background="@color/create_post_button_color"
-            android:bottomLeftRadius="40dp"
-            android:bottomRightRadius="10dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp"
-            android:text="Create"
-            android:textColor="@color/icon_color"
-            android:topLeftRadius="10dp"
-            android:topRightRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
-            app:layout_constraintStart_toStartOf="parent" />
+            <AutoCompleteTextView
+                android:id="@+id/postCategoryAutoCompleteTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/postCategoryTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postDescriptionTextView" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/createPostButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="168dp"
+                android:background="@color/create_post_button_color"
+                android:bottomLeftRadius="40dp"
+                android:bottomRightRadius="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:text="Create"
+                android:textColor="@color/icon_color"
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.489"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

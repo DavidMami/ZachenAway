@@ -22,4 +22,10 @@
             app:argType="com.example.zachenaway.data.database.schema.User" />
     </fragment>
 
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.zachenaway.ui.menu.CreatePostFragment"
+        android:label="ZachenAway Create post page"
+        tools:layout="@layout/fragment_create_post" />
+
 </navigation>
