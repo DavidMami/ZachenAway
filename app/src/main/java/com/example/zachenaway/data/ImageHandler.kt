@@ -12,20 +12,17 @@ import com.squareup.picasso.Picasso
 class ImageHandler(
     activity: Fragment,
     private var image: ImageView,
+    fromGalleryBtn: ImageButton,
 ) {
-    private val cameraLauncher: ActivityResultLauncher<Void?>
     private val galleryLauncher: ActivityResultLauncher<String>
 
     init {
-        cameraLauncher =
-            activity.registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { result ->
-                result?.let { image.setImageBitmap(it) }
-            }
-
         galleryLauncher =
             activity.registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
                 result?.let { image.setImageURI(it) }
             }
+
+        fromGalleryBtn.setOnClickListener { galleryLauncher.launch("image/*") }
     }
 
     fun getImage(): ImageView {

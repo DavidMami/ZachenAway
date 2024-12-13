@@ -12,6 +12,9 @@
     <color name="register_button_color">#1E87E9</color>
     <color name="login_button_color">#1E87E9</color>
 
+    <color name="create_post_button_color">#E91E63</color>
+    <color name="edit_post_button_color">#E91E63</color>
+
     <color name="skyBlue">#FF3700B3</color>
     <color name="menuBackground">#FF6200EE</color>
 

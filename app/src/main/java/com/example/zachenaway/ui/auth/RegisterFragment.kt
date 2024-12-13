@@ -43,10 +43,10 @@ class RegisterFragment : Fragment() {
         initializeVariables(view)
         initializeOnClickListeners()
 
-        imageHandler = ImageHandler(
-            this,
-            view.findViewById(R.id.userImage)
-        )
+//        imageHandler = ImageHandler(
+//            this,
+//            view.findViewById(R.id.userImage)
+//        )
 
         return view
     }
