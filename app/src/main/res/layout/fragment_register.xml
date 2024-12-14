@@ -68,6 +68,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
                 app:shapeAppearanceOverlay="@style/circleImageView" />
+
+            <ImageButton
+                android:id="@+id/uploadUserImageFromGalleryButton"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gallery_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText

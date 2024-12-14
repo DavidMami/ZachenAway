@@ -2,8 +2,11 @@ package com.example.zachenaway.ui.auth
 
 import com.example.zachenaway.ui.main.MainActivity
 import com.example.zachenaway.data.ImageHandler
-
 import com.example.zachenaway.data.database.schema.User
+import com.example.zachenaway.data.model.UserModel
+import com.example.zachenaway.data.repository.AuthRepository
+import com.example.zachenaway.data.repository.UserFirebaseRepository
+import com.example.zachenaway.data.database.ZachenAwayApplication
 
 import com.example.zachenaway.R
 import android.content.Intent
@@ -15,10 +18,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.zachenaway.data.model.UserModel
-import com.example.zachenaway.data.repository.AuthRepository
-import com.example.zachenaway.data.repository.UserFirebaseRepository
-import com.example.zachenaway.data.database.ZachenAwayApplication
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class RegisterFragment : Fragment() {
@@ -43,10 +42,11 @@ class RegisterFragment : Fragment() {
         initializeVariables(view)
         initializeOnClickListeners()
 
-//        imageHandler = ImageHandler(
-//            this,
-//            view.findViewById(R.id.userImage)
-//        )
+        imageHandler = ImageHandler(
+            this,
+            view.findViewById(R.id.userImage),
+            view.findViewById(R.id.uploadUserImageFromGalleryButton)
+        )
 
         return view
     }
@@ -81,15 +81,18 @@ class RegisterFragment : Fragment() {
         }
 
         if (firstName.text.toString().isEmpty() || lastName.text.toString().isEmpty()) {
+            progressIndicator.hide()
             Toast.makeText(context, "Name is missing", Toast.LENGTH_SHORT).show()
             return
         }
 
         userAuthentication.register(email, password) { firebaseUser ->
             if (firebaseUser == null) {
-                progressIndicator.hide()
-                Toast.makeText(context, "Firebase Authentication failed.", Toast.LENGTH_SHORT)
-                    .show()
+                requireActivity().runOnUiThread {
+                    progressIndicator.hide()
+                    Toast.makeText(context, "Firebase Authentication failed.", Toast.LENGTH_SHORT)
+                        .show()
+                }
                 return@register
             }
 
@@ -105,29 +108,35 @@ class RegisterFragment : Fragment() {
 
             val userModal = UserFirebaseRepository()
 
-//            userModal.uploadImage(user.email) { imageHandler.getPhoto() } { url ->
-//                if (url != null) user.photoUrl = url
-//
-//                UserModel.instance().addUser(user)
-//            }
-
             if (user != null) {
                 user.email?.let {
                     userModal.uploadImage(it, imageHandler.getPhoto()) { url ->
-                        if (url != null) {
-                            user.imageUrl = url
-                        }
+                        if (url != null) user.imageUrl = url
 
                         UserModel.instance().addUser(user)
+
+                        // Ensure UI operations are on the main thread
+                        requireActivity().runOnUiThread {
+                            progressIndicator.hide()
+                            Toast.makeText(context, "Authentication success.", Toast.LENGTH_SHORT)
+                                .show()
+                            startActivity(
+                                Intent(
+                                    ZachenAwayApplication.getMyContext(),
+                                    MainActivity::class.java
+                                )
+                            )
+                        }
                     }
+                }
+            } else {
+                requireActivity().runOnUiThread {
+                    progressIndicator.hide()
+                    Toast.makeText(context, "Failed to create user object.", Toast.LENGTH_SHORT).show()
                 }
             }
 
-
             UserModel.instance().setSignedUser()
-
-            Toast.makeText(context, "Authentication success.", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(ZachenAwayApplication.getMyContext(), MainActivity::class.java))
         }
     }
 }

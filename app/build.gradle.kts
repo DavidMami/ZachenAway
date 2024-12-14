@@ -5,6 +5,8 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.devtools.ksp")
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -64,6 +66,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
+    implementation("com.google.android.gms:play-services-base:18.2.0")
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.auth.ktx)

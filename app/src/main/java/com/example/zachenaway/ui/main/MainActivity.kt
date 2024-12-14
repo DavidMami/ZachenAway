@@ -1,47 +1,53 @@
 package com.example.zachenaway.ui.main
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.zachenaway.ui.theme.ZachenAwayTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavArgument
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.example.zachenaway.R
 
-class MainActivity : ComponentActivity() {
+import com.example.zachenaway.data.model.UserModel
+import com.example.zachenaway.data.repository.AuthRepository
+import com.example.zachenaway.ui.auth.SplashScreenActivity
+
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ZachenAwayTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+
+        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_splash_screen)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_graph_host) as NavHostFragment
+        val navController = navHostFragment.navController
+        val bottomNav: BottomNavigationView = findViewById(R.id.mainBottomNavBar)
+
+        NavigationUI.setupWithNavController(bottomNav, navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.userPageFragment) {
+                UserModel.instance().getSignedUser { user ->
+                    val userArgument = NavArgument.Builder()
+                        .setDefaultValue(user?.value)
+                        .setIsNullable(true)
+                        .build()
+                    destination.addArgument("user", userArgument)
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    override fun onStart() {
+        super.onStart()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ZachenAwayTheme {
-        Greeting("Android")
+        if (AuthRepository.getInstance().getUser() == null) {
+            val intent = Intent(this@MainActivity, SplashScreenActivity::class.java)
+            startActivity(intent)
+        } else {
+            UserModel.instance().setSignedUser()
+        }
     }
 }
