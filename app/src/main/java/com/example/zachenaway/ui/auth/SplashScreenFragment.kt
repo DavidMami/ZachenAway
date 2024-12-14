@@ -1,14 +1,17 @@
 package com.example.zachenaway.ui.auth
 
+import com.example.zachenaway.databinding.FragmentSplashScreenBinding
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.example.zachenaway.R
 
 class SplashScreenFragment : Fragment() {
+
+    private var _binding: FragmentSplashScreenBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         fun newInstance(): SplashScreenFragment {
@@ -20,22 +23,25 @@ class SplashScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_splash_screen, container, false)
-
-        val loginBtn: Button = view.findViewById(R.id.loginButton)
-        val registerBtn: Button = view.findViewById(R.id.registerButton)
+        // Inflate the layout using view binding
+        _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
 
         val authFragmentManager = AuthFragmentManager(requireActivity())
 
-        loginBtn.setOnClickListener {
+        binding.loginButton.setOnClickListener {
             authFragmentManager.changeFragment(LoginFragment::class.java)
         }
 
-        registerBtn.setOnClickListener {
+        binding.registerButton.setOnClickListener {
             authFragmentManager.changeFragment(RegisterFragment::class.java)
         }
 
-        return view
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Clean up the binding to avoid memory leaks
+        _binding = null
     }
 }
