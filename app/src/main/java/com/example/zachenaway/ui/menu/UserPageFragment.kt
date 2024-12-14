@@ -3,6 +3,7 @@ package com.example.zachenaway.ui.menu
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zachenaway.data.adapter.UserPostsListAdapter
 import com.example.zachenaway.data.database.schema.Post
@@ -48,7 +50,14 @@ class UserPageFragment : Fragment() {
             startActivity(Intent(activity, SplashScreenActivity::class.java))
         }
 
-        // TODO: Implement support for user edit button
+        binding?.userEditButton?.setOnClickListener {
+            user?.let { currentUser ->
+                Log.d("QQQQQQ", "this is my message!!!")
+                val action = UserPageFragmentDirections.actionUserPageFragmentToEditUserFragment(currentUser)
+                Navigation.findNavController(binding!!.root).navigate(action)
+            }
+            Log.d("WWWWWW", "this is my message!!!")
+        }
 
         return binding?.root
     }
@@ -77,6 +86,8 @@ class UserPageFragment : Fragment() {
 
     private fun initializeUser(userName: TextView, userImage: ImageView) {
         if (user == null) {
+            Log.d("DAVID", "User not found!!!")
+
             val argUser = arguments?.getSerializable(USER_KEY) as? User
             if (argUser == null) {
                 UserModel.instance().getSignedUser { u ->
@@ -96,6 +107,8 @@ class UserPageFragment : Fragment() {
                 }
             }
         } else {
+            Log.d("DAVID", "User is found!!!")
+
             userPageViewModel.getUser()?.observe(viewLifecycleOwner) { updatedUser ->
                 user = updatedUser
                 if (updatedUser != null) {
