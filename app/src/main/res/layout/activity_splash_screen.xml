@@ -23,40 +23,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/login_layout"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <Button
-                android:id="@+id/loginButton"
-                android:layout_width="235dp"
-                android:layout_height="wrap_content"
-                android:background="@color/login_button_color"
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp"
-                android:text="Login"
-                android:textColor="#FFFFFF"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"
-                tools:ignore="TextContrastCheck" />
-
-            <Button
-                android:id="@+id/registerButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="Create an account"
-                android:textAllCaps="false"
-                android:textColor="#090909" />
-        </LinearLayout>
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/auth_nav_graph_host"
             android:name="androidx.navigation.fragment.NavHostFragment"

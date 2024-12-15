@@ -22,13 +22,5 @@ class SplashScreenActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.auth_nav_graph_host) as NavHostFragment
         val navController = navHostFragment.navController
-
-        binding.loginButton.setOnClickListener {
-            navController.navigate(R.id.loginFragment)
-        }
-
-        binding.registerButton.setOnClickListener {
-            navController.navigate(R.id.registerFragment)
-        }
     }
 }

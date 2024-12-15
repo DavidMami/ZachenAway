@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashScreeeFragment">
+
+    <fragment
+        android:id="@+id/splashScreeeFragment"
+        android:name="com.example.zachenaway.ui.auth.SplashScreenFragment"
+        android:label="SplashScreeeFragment"
+        tools:layout="@layout/fragment_splash_screen" />
 
     <fragment
         android:id="@+id/loginFragment"
