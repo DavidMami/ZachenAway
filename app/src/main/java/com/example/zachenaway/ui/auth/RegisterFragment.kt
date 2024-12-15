@@ -16,6 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.zachenaway.R
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class RegisterFragment : Fragment() {
@@ -23,7 +25,6 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var authFragmentManager: AuthFragmentManager
     private lateinit var imageHandler: ImageHandler
     private lateinit var progressIndicator: CircularProgressIndicator
 
@@ -32,7 +33,6 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
-        authFragmentManager = AuthFragmentManager(requireActivity())
 
         initializeVariables()
         initializeOnClickListeners()
@@ -51,7 +51,7 @@ class RegisterFragment : Fragment() {
 
     private fun initializeOnClickListeners() {
         binding.signInButton.setOnClickListener {
-            authFragmentManager.changeFragment(LoginFragment::class.java)
+            findNavController().navigate(R.id.loginFragment)
         }
         binding.signUpButton.setOnClickListener {
             signUp()
@@ -93,9 +93,8 @@ class RegisterFragment : Fragment() {
                 User(
                     it.uid,
                     email,
-                    "",
                     firstName,
-                    lastName
+                    lastName,
                 )
             }
 

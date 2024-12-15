@@ -28,13 +28,13 @@ class SplashScreenFragment : Fragment() {
 
         val authFragmentManager = AuthFragmentManager(requireActivity())
 
-        binding.loginButton.setOnClickListener {
-            authFragmentManager.changeFragment(LoginFragment::class.java)
-        }
-
-        binding.registerButton.setOnClickListener {
-            authFragmentManager.changeFragment(RegisterFragment::class.java)
-        }
+//        binding.loginButton.setOnClickListener {
+//            authFragmentManager.changeFragment(LoginFragment::class.java)
+//        }
+//
+//        binding.registerButton.setOnClickListener {
+//            authFragmentManager.changeFragment(RegisterFragment::class.java)
+//        }
 
         return binding.root
     }

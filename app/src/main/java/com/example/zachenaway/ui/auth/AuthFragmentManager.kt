@@ -7,10 +7,11 @@ import com.example.zachenaway.R
 
 class AuthFragmentManager(activity: FragmentActivity) {
     private val fragmentManager: FragmentManager = activity.supportFragmentManager
+    private val containerId = R.id.auth_nav_graph_host
 
     fun changeFragment(fragmentClass: Class<out Fragment>, addToBackStack: Boolean = false) {
         val transaction = fragmentManager.beginTransaction()
-            .replace(R.id.loginHomePageFragment, fragmentClass, null)
+            .replace(containerId, fragmentClass, null)
             .setReorderingAllowed(true)
 
         if (addToBackStack) {
