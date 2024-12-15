@@ -63,9 +63,10 @@ class RegisterFragment : Fragment() {
         progressIndicator.show()
 
         val email = binding.emailInput.text.toString()
-        val password = binding.passwordInput.text.toString()
+        val phone = binding.phoneInput.text.toString()
         val firstName = binding.firstNameInput.text.toString()
         val lastName = binding.lastNameInput.text.toString()
+        val password = binding.passwordInput.text.toString( )
 
         if (!userAuthentication.isEmailAndPasswordValid(email, password)) {
             progressIndicator.hide()
@@ -95,6 +96,7 @@ class RegisterFragment : Fragment() {
                     email,
                     firstName,
                     lastName,
+                    phone
                 )
             }
 

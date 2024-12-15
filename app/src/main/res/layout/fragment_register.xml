@@ -137,6 +137,16 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
+                android:id="@+id/phoneInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:minHeight="48dp" />
+
+            <EditText
                 android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,7 +161,7 @@
             android:id="@+id/sign_up_layout"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="20dp"
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical"
