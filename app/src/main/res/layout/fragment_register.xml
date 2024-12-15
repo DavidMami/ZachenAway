@@ -73,6 +73,18 @@
                     app:shapeAppearanceOverlay="@style/circleImageView" />
 
                 <ImageButton
+                    android:id="@+id/takePhotoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:src="@android:drawable/ic_menu_camera"
+                    app:layout_constraintBottom_toTopOf="@+id/uploadUserImageFromGalleryButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
                     android:id="@+id/uploadUserImageFromGalleryButton"
                     android:layout_width="55dp"
                     android:layout_height="50dp"
@@ -82,6 +94,7 @@
                     android:src="@drawable/gallery_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/takePhotoButton"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

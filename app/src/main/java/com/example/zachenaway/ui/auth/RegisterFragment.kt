@@ -45,7 +45,8 @@ class RegisterFragment : Fragment() {
         imageHandler = ImageHandler(
             this,
             binding.userImage,
-            binding.uploadUserImageFromGalleryButton
+            binding.uploadUserImageFromGalleryButton,
+            binding.takePhotoButton
         )
     }
 
