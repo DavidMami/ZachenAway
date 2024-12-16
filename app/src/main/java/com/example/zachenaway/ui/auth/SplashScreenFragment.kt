@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.zachenaway.R
 
 class SplashScreenFragment : Fragment() {
 
@@ -26,14 +28,12 @@ class SplashScreenFragment : Fragment() {
         // Inflate the layout using view binding
         _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
 
-        val authFragmentManager = AuthFragmentManager(requireActivity())
-
         binding.loginButton.setOnClickListener {
-            authFragmentManager.changeFragment(LoginFragment::class.java)
+            findNavController().navigate(R.id.loginFragment)
         }
 
         binding.registerButton.setOnClickListener {
-            authFragmentManager.changeFragment(RegisterFragment::class.java)
+            findNavController().navigate(R.id.registerFragment)
         }
 
         return binding.root

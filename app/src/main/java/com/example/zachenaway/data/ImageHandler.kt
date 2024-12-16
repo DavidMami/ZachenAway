@@ -12,17 +12,39 @@ import com.squareup.picasso.Picasso
 class ImageHandler(
     activity: Fragment,
     private var image: ImageView,
-    fromGalleryBtn: ImageButton,
+    fromGalleryButton: ImageButton,
+    takePhotoButton: ImageButton
 ) {
-    private val galleryLauncher: ActivityResultLauncher<String>
+    private val cameraLauncher: ActivityResultLauncher<Void?>
+    private var galleryLauncher: ActivityResultLauncher<String>
 
     init {
+        cameraLauncher =
+            activity.registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { result ->
+                result?.let { image.setImageBitmap(it) }
+            }
+
+        takePhotoButton.setOnClickListener { cameraLauncher.launch(null) }
+
         galleryLauncher =
             activity.registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
                 result?.let { image.setImageURI(it) }
             }
 
-        fromGalleryBtn.setOnClickListener { galleryLauncher.launch("image/*") }
+        fromGalleryButton.setOnClickListener { galleryLauncher.launch("image/*") }
+    }
+
+    constructor(
+        activity: Fragment,
+        image: ImageView,
+        fromGalleryButton: ImageButton
+    ) : this(activity, image, fromGalleryButton, ImageButton(activity.requireContext())) {
+        galleryLauncher =
+            activity.registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
+                result?.let { image.setImageURI(it) }
+            }
+
+        fromGalleryButton.setOnClickListener { galleryLauncher.launch("image/*") }
     }
 
     fun getImage(): ImageView {

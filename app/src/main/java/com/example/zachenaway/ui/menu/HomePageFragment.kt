@@ -6,6 +6,7 @@ import com.example.zachenaway.databinding.FragmentHomePageBinding
 import com.example.zachenaway.viewmodel.HomePageViewModel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,10 +27,17 @@ class HomePageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomePageBinding.inflate(inflater, container, false)
-        homePageViewModel = ViewModelProvider(this)[HomePageViewModel::class.java]
+        try {
+            homePageViewModel = ViewModelProvider(this)[HomePageViewModel::class.java]
+        } catch (e: Exception) {
+            Log.e("HomePageFragment", "Error initializing ViewModel: ${e.message}")
+        }
+
         adapter = PostsListAdapter(layoutInflater, posts)
+
         binding.PostsList.layoutManager = LinearLayoutManager(context)
         binding.PostsList.adapter = adapter
+
         return binding.root
     }
 

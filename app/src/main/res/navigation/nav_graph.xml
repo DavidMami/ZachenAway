@@ -9,7 +9,14 @@
         android:id="@+id/homePageFragment"
         android:name="com.example.zachenaway.ui.menu.HomePageFragment"
         android:label="ZachenAway home page"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page">
+        <action
+            android:id="@+id/action_homePageFragment_to_userPageFragment"
+            app:destination="@id/userPageFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/userPageFragment"

@@ -56,9 +56,9 @@ class UserModel private constructor() {
                     postProfileUser(getCurrentUserId()?.let { it1 -> db.getUserDao().findById(it1) })
                 }
             } else {
-//                PostModel.instance().refreshUserPosts {
-//                    postProfileUser(user)
-//                }
+                PostModel.instance.refreshUserPosts {
+                    postProfileUser(user)
+                }
             }
         }
     }
@@ -115,7 +115,7 @@ class UserModel private constructor() {
         firebaseUser.updateUser(user) {
             db.executor.execute {
                 db.getUserDao().update(user)
-//                PostModel.instance().refreshAllPostsWithUser()
+                PostModel.instance.refreshAllPostsWithUser()
             }
             listener.onComplete(Unit)
         }

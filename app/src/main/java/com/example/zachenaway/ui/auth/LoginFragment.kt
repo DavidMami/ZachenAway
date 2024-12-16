@@ -13,6 +13,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.zachenaway.R
 
 class LoginFragment : Fragment() {
 
@@ -24,7 +26,6 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        val fragmentManager = AuthFragmentManager(requireActivity())
         val userAuthentication = AuthRepository.getInstance()
 
         binding.signInBtn.setOnClickListener {
@@ -54,7 +55,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.SignUpBtn.setOnClickListener {
-            fragmentManager.changeFragment(RegisterFragment::class.java)
+            findNavController().navigate(R.id.registerFragment)
         }
 
         return binding.root
