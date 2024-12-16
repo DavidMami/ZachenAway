@@ -16,14 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZachenAway"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".ui.auth.SplashScreenActivity"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            android:exported="false">-->
-<!--            <meta-data-->
-<!--                android:name="android.app.lib_name"-->
-<!--                android:value="" />-->
-<!--        </activity>-->
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.auth.SplashScreenActivity"
             android:exported="true">

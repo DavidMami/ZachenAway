@@ -20,7 +20,18 @@ class UserPostsListHolder(itemView: View, data: List<Post>) : RecyclerView.ViewH
 
     fun bind(post: Post) {
         this.post = post
-        Picasso.get().load(post.image).into(image)
+
+        if (post.image.isNotEmpty()) {
+            Picasso.get()
+                .load(post.image)
+                .placeholder(R.drawable.post_image_placeholder)
+                .into(image)
+        } else {
+            Picasso.get()
+                .load(R.drawable.post_image_placeholder)
+                .into(image)
+        }
+
         description.text = post.description
         location.text = post.location
         category.text = post.category
