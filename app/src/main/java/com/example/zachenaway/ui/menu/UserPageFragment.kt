@@ -94,9 +94,15 @@ class UserPageFragment : Fragment() {
                     if (u != null) {
                         user = u.value
                     }
-                    user?.let {
-                        userName.text = it.getName()
-                        Picasso.get().load(it.imageUrl).into(userImage)
+
+                    activity?.runOnUiThread {
+                        user?.let {
+                            userName.text = it.getName()
+
+                            if (!it.imageUrl.isNullOrEmpty()) {
+                                Picasso.get().load(it.imageUrl).into(userImage)
+                            }
+                        }
                     }
                 }
             } else {
@@ -111,11 +117,10 @@ class UserPageFragment : Fragment() {
 
             userPageViewModel.getUser()?.observe(viewLifecycleOwner) { updatedUser ->
                 user = updatedUser
-                if (updatedUser != null) {
-                    userName.text = updatedUser.getName()
-                }
-                if (updatedUser != null) {
-                    Picasso.get().load(updatedUser.imageUrl).into(userImage)
+
+                updatedUser?.let {
+                    userName.text = it.getName()
+                    Picasso.get().load(it.imageUrl).into(userImage)
                 }
             }
         }
