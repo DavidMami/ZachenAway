@@ -67,7 +67,7 @@ class RegisterFragment : Fragment() {
         val phone = binding.phoneInput.text.toString()
         val firstName = binding.firstNameInput.text.toString()
         val lastName = binding.lastNameInput.text.toString()
-        val password = binding.passwordInput.text.toString( )
+        val password = binding.passwordInput.text.toString()
 
         if (!userAuthentication.isEmailAndPasswordValid(email, password)) {
             progressIndicator.hide()
@@ -105,13 +105,16 @@ class RegisterFragment : Fragment() {
 
             user.email?.let { email ->
                 userModal.uploadImage(email, imageHandler.getPhoto()) { url ->
-                    if (url != null) user.imageUrl = url
+                    if (url != null) {
+                        user.imageUrl = url
+                    }
 
                     UserModel.instance().addUser(user)
 
                     requireActivity().runOnUiThread {
                         progressIndicator.hide()
-                        Toast.makeText(context, "Authentication success.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Authentication success.", Toast.LENGTH_SHORT)
+                            .show()
                         startActivity(
                             Intent(
                                 ZachenAwayApplication.getMyContext(),
@@ -123,7 +126,8 @@ class RegisterFragment : Fragment() {
             } ?: run {
                 requireActivity().runOnUiThread {
                     progressIndicator.hide()
-                    Toast.makeText(context, "Failed to create user object.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Failed to create user object.", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
