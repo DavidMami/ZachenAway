@@ -58,7 +58,8 @@ class CreatePostFragment : Fragment() {
             imageLaunchers = ImageHandler(
                 this@CreatePostFragment,
                 postImageImageView,
-                uploadPostImageButton,
+                uploadImageFromGalleryButton,
+                takePhotoButton
             )
         }
     }
