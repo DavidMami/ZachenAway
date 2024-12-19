@@ -42,6 +42,7 @@ class EditUserFragment : Fragment() {
             this,
             binding!!.userImageImageView,
             binding!!.uploadImageFromGalleryButton,
+            binding!!.takePhotoButton,
         )
 
         initializeData()
