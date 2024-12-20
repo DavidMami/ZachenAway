@@ -30,20 +30,6 @@
                 app:layout_constraintVertical_bias="0.50"
                 app:showAnimationBehavior="none" />
 
-            <TextView
-                android:id="@+id/page_title_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
-                android:text="Create Post"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.482"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/postImageImageView"
                 android:layout_width="238dp"
@@ -54,7 +40,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/page_title_textView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/takePhotoButton"
@@ -65,7 +51,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.38"
                 app:layout_constraintStart_toEndOf="@+id/postImageImageView"
-                app:layout_constraintTop_toBottomOf="@+id/page_title_textView"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
