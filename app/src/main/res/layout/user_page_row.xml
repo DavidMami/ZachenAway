@@ -88,6 +88,18 @@
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:srcCompat="@drawable/edit_post_icon" />
 
+            <ImageButton
+                android:id="@+id/post_delete_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="8dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitCenter"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:srcCompat="@drawable/delete_post_icon" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
