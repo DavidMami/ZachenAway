@@ -2,6 +2,8 @@ package com.example.zachenaway.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavArgument
 import androidx.navigation.fragment.NavHostFragment
@@ -26,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(bottomNav, navController)
 
+        val actionBarHeight = getActionBarHeight()
+        val fragmentContainerView = findViewById<View>(R.id.main_nav_graph_host)
+        fragmentContainerView.setPadding(0, actionBarHeight, 0, 0)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.userPageFragment) {
                 UserModel.instance().getSignedUser { user ->
@@ -36,6 +42,16 @@ class MainActivity : AppCompatActivity() {
                     destination.addArgument("user", userArgument)
                 }
             }
+        }
+    }
+
+    private fun getActionBarHeight(): Int {
+        val tv = TypedValue()
+
+        return if (theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+            TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
+        } else {
+            0
         }
     }
 
