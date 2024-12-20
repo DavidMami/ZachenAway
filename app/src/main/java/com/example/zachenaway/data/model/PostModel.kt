@@ -19,9 +19,10 @@ class PostModel private constructor() {
     private val posts = MutableLiveData<List<Post>>()
     private val postsWithUser = MutableLiveData<List<PostWithUser>>()
     private val userPosts = MutableLiveData<List<Post>?>()
-    val postsListLoadingState = MutableLiveData<LoadingState>(LoadingState.NOT_LOADING)
-    val postsWithUserListLoadingState = MutableLiveData<LoadingState>(LoadingState.NOT_LOADING)
-    val userPostsListLoadingState = MutableLiveData<LoadingState>(LoadingState.NOT_LOADING)
+
+    private val postsListLoadingState = MutableLiveData(LoadingState.NOT_LOADING)
+    private val postsWithUserListLoadingState = MutableLiveData(LoadingState.NOT_LOADING)
+    private val userPostsListLoadingState = MutableLiveData(LoadingState.NOT_LOADING)
 
     companion object {
         val instance = PostModel()
@@ -104,6 +105,20 @@ class PostModel private constructor() {
             db.executor.execute {
                 db.getPostDao().update(post)
                 refreshAllPostsWithUser()
+            }
+        }
+    }
+
+    fun deletePost(postId: String, imageName: String, listener: Listener<Unit>) {
+        postFirebaseModel.deletePost(postId, imageName) { success ->
+            if (success == true) {
+                db.executor.execute {
+                    db.getPostDao().deleteById(postId)
+                    refreshAllPostsWithUser()
+                    listener.onComplete(Unit)
+                }
+            } else {
+                listener.onComplete(Unit)
             }
         }
     }

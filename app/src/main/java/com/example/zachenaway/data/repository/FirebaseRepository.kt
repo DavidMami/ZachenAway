@@ -41,4 +41,17 @@ abstract class FirebaseRepository {
             }
         }
     }
+
+    fun deleteImage(name: String, listener: Listener<Boolean>) {
+        val storageRef: StorageReference = storage.reference
+        val imagesRef = storageRef.child("$name.jpg")
+
+        imagesRef.delete()
+            .addOnSuccessListener {
+                listener.onComplete(true)
+            }
+            .addOnFailureListener {
+                listener.onComplete(false)
+            }
+    }
 }
