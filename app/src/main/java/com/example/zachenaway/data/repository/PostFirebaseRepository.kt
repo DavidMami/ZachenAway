@@ -34,4 +34,20 @@ class PostFirebaseModel : FirebaseRepository() {
             .update(post.toJson())
             .addOnSuccessListener { callback.onComplete(Unit) }
     }
+
+    fun deletePost(postId: String, imageName: String, callback: Listener<Boolean>) {
+        deleteImage(imageName) { imageDeleted ->
+            if (imageDeleted == true) {
+                db.collection("Posts").document(postId).delete()
+                    .addOnSuccessListener {
+                        callback.onComplete(true)
+                    }
+                    .addOnFailureListener {
+                        callback.onComplete(false)
+                    }
+            } else {
+                callback.onComplete(false)
+            }
+        }
+    }
 }
