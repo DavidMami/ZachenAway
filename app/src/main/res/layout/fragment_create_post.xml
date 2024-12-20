@@ -6,7 +6,8 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:context="ui.menu.CreatePostFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -56,15 +57,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/page_title_textView" />
 
             <ImageButton
-                android:id="@+id/uploadPostImageButton"
+                android:id="@+id/takePhotoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:src="@android:drawable/ic_menu_camera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toEndOf="@+id/postImageImageView"
+                app:layout_constraintTop_toBottomOf="@+id/page_title_textView"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/uploadImageFromGalleryButton"
                 android:layout_width="55dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="-70dp"
-                android:layout_marginBottom="70dp"
+                android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/gallery_icon"
-                app:layout_constraintBottom_toBottomOf="@id/postImageImageView"
-                app:layout_constraintEnd_toEndOf="@id/postImageImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toEndOf="@+id/postImageImageView"
+                app:layout_constraintTop_toBottomOf="@+id/takePhotoButton"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView

@@ -41,7 +41,8 @@ class EditPostFragment : Fragment() {
         imageLaunchers = ImageHandler(
             this,
             binding!!.postImageImageView,
-            binding!!.uploadPostImageButton,
+            binding!!.uploadImageFromGalleryButton,
+            binding!!.takePhotoButton,
         )
 
         initializeVariables()
