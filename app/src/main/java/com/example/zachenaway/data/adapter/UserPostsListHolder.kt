@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zachenaway.R
 import com.example.zachenaway.data.database.schema.Post
+import com.example.zachenaway.ui.menu.UserPageFragmentDirections
 import com.squareup.picasso.Picasso
 
 class UserPostsListHolder(itemView: View, data: List<Post>) : RecyclerView.ViewHolder(itemView) {
@@ -36,6 +37,10 @@ class UserPostsListHolder(itemView: View, data: List<Post>) : RecyclerView.ViewH
         location.text = post.location
         category.text = post.category
 
-        // TODO: Handle the edit button listener
+        editButton.setOnClickListener {
+            Navigation.findNavController(itemView).navigate(
+                UserPageFragmentDirections.actionUserPageFragmentToEditPostFragment(post)
+            )
+        }
     }
 }
