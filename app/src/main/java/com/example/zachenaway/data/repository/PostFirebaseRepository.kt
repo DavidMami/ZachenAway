@@ -50,4 +50,26 @@ class PostFirebaseModel : FirebaseRepository() {
             }
         }
     }
+
+        fun listenForPostsUpdates(callback: Listener<List<Post>>) {
+        db.collection("Posts").addSnapshotListener { snapshot, error ->
+            if (error != null) {
+                callback.onError("Error listening for updates: ${error.message}")
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null) {
+                val posts = mutableListOf<Post>()
+
+                snapshot.documents.forEach { document ->
+                    document.data?.let { data ->
+                        posts.add(Post(data))
+                    }
+                }
+
+                callback.onComplete(posts)
+            }
+        }
+    }
+
 }

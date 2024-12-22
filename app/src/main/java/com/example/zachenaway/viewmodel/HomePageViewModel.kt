@@ -8,6 +8,10 @@ import androidx.lifecycle.ViewModel
 
 class HomePageViewModel : ViewModel() {
 
+//    init {
+//        PostModel.instance.startListeningForPosts()
+//    }
+
     private val postsWithUser: LiveData<List<PostWithUser>> =
         PostModel.instance.getAllPostsWithUser()
 
