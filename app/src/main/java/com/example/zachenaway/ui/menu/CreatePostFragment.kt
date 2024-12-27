@@ -86,7 +86,8 @@ class CreatePostFragment : Fragment() {
         with(binding) {
             return postLocationEditText.text.toString().isNotEmpty() &&
                     postDescriptionEditText.text.toString().isNotEmpty() &&
-                    postCategoryEditText.text.toString().isNotEmpty()
+                    postCategoryEditText.text.toString().isNotEmpty() &&
+                    postCityAutoComplete.text.toString().isNotEmpty()
         }
     }
 
@@ -97,6 +98,7 @@ class CreatePostFragment : Fragment() {
             Post(
                 id = UUID.randomUUID().toString(),
                 location = binding.postLocationEditText.text.toString(),
+                city = binding.postCityAutoComplete.text.toString(),
                 description = binding.postDescriptionEditText.text.toString(),
                 category = binding.postCategoryEditText.text.toString(),
                 userId = it,

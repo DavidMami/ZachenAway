@@ -11,6 +11,7 @@ data class Post(
     @PrimaryKey
     var id: String = "",
     var location: String = "",
+    var city: String = "",
     var description: String = "",
     var category: String = "",
     var userId: String = "",
@@ -20,6 +21,7 @@ data class Post(
     constructor(obj: Map<String, Any>) : this(
         id = obj["id"] as? String ?: "",
         location = obj["location"] as? String ?: "",
+        city = obj["city"] as? String ?: "",
         description = obj["description"] as? String ?: "",
         category = obj["category"] as? String ?: "",
         userId = obj["userId"] as? String ?: "",
@@ -29,6 +31,7 @@ data class Post(
     constructor(
         id: String,
         location: EditText,
+        city: String,
         description: EditText,
         category: String,
         userId: String,
@@ -37,6 +40,7 @@ data class Post(
         id = id,
         location = location.text.toString(),
         description = description.text.toString(),
+        city = city,
         category = category,
         userId = userId,
         image = image,
@@ -47,6 +51,7 @@ data class Post(
             "id" to id,
             "location" to location,
             "description" to description,
+            "city" to city,
             "category" to category,
             "userId" to userId,
             "image" to image,
