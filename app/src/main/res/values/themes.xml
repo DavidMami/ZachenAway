@@ -1,25 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-<!-- Base application theme. -->
-<style name="Theme.ZachenAway" parent="Theme.AppCompat.Light.NoActionBar">
-    <!-- Primary brand color. -->
-    <item name="colorPrimary">#76767A</item>
-<!--    <item name="colorPrimaryVariant">@color/palePurple</item>-->
-    <item name="colorOnPrimary">@color/white</item>
-    <!-- Secondary brand color. -->
-    <item name="colorSecondary">@color/teal_200</item>
-    <item name="colorSecondaryVariant">@color/teal_700</item>
-    <item name="colorOnSecondary">@color/black</item>
-    <!-- Status bar color. -->
-    <item name="android:statusBarColor">@color/purple_700</item>
-    <!-- Customize your theme here. -->
-</style>
 
-<style name="Theme.ZachenAway.NoActionBar">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-</style>
+    <!-- Base theme with action bar -->
+    <style name="Theme.ZachenAway" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="colorPrimary">#838387</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
 
-<style name="Theme.ZachenAway.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!-- Theme without action bar -->
+    <style name="Theme.ZachenAway.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>-->
+        <item name="windowNoTitle">true</item>
+    </style>
 
-<style name="Theme.ZachenAway.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

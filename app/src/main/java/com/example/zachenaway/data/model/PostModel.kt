@@ -122,4 +122,22 @@ class PostModel private constructor() {
             }
         }
     }
+
+    fun startListeningForPosts() {
+        postFirebaseModel.listenForPostsUpdates(object : Listener<List<Post>> {
+            override fun onComplete(value: List<Post>?) {
+                db.executor.execute {
+                    if (value != null) {
+                        updatePostsInRoom(value)
+                    }
+
+                    postsWithUser.postValue(db.getPostDao().getPostsWithUser())
+                }
+            }
+
+            override fun onError(error: String?) {
+                // Handle the error if needed
+            }
+        })
+    }
 }
