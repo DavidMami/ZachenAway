@@ -10,8 +10,8 @@ import java.io.Serializable
 data class Post(
     @PrimaryKey
     var id: String = "",
-    var location: String = "",
     var city: String = "",
+    var street: String = "",
     var description: String = "",
     var category: String = "",
     var userId: String = "",
@@ -20,8 +20,8 @@ data class Post(
 
     constructor(obj: Map<String, Any>) : this(
         id = obj["id"] as? String ?: "",
-        location = obj["location"] as? String ?: "",
         city = obj["city"] as? String ?: "",
+        street = obj["street"] as? String ?: "",
         description = obj["description"] as? String ?: "",
         category = obj["category"] as? String ?: "",
         userId = obj["userId"] as? String ?: "",
@@ -30,17 +30,17 @@ data class Post(
 
     constructor(
         id: String,
-        location: EditText,
         city: String,
+        street: EditText,
         description: EditText,
         category: String,
         userId: String,
         image: String,
     ) : this(
         id = id,
-        location = location.text.toString(),
-        description = description.text.toString(),
         city = city,
+        street = street.text.toString(),
+        description = description.text.toString(),
         category = category,
         userId = userId,
         image = image,
@@ -49,9 +49,9 @@ data class Post(
     fun toJson(): Map<String, Any> {
         return mapOf(
             "id" to id,
-            "location" to location,
-            "description" to description,
             "city" to city,
+            "street" to street,
+            "description" to description,
             "category" to category,
             "userId" to userId,
             "image" to image,

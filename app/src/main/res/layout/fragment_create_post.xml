@@ -83,30 +83,6 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
-                android:id="@+id/postLocationTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="Location"
-                android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/postLocationEditText"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
-                android:id="@+id/postLocationEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/postLocationTextView"
-                app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
                 android:id="@+id/postCityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +103,31 @@
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/postCityTextView"
-                app:layout_constraintTop_toBottomOf="@+id/postLocationEditText"
+                app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/postStreetTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Street"
+                android:textSize="18sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/postStreetEditText"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/postStreetEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/postStreetTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postCityAutoComplete"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -152,7 +152,7 @@
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/postDescriptionTextView"
-                app:layout_constraintTop_toBottomOf="@+id/postCityAutoComplete" />
+                app:layout_constraintTop_toBottomOf="@+id/postStreetEditText" />
 
             <TextView
                 android:id="@+id/postCategoryTextView"

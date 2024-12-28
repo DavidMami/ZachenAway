@@ -14,7 +14,8 @@ class PostsListHolder(itemView: View, private val data: List<PostWithUser>) :
     private val userPhone: TextView = itemView.findViewById(R.id.user_phone)
     private val userImage: ImageView = itemView.findViewById(R.id.user_image)
     private val postDescription: TextView = itemView.findViewById(R.id.post_description)
-    private val postLocation: TextView = itemView.findViewById(R.id.post_location)
+    private val postCity: TextView = itemView.findViewById(R.id.post_city)
+    private val postStreet: TextView = itemView.findViewById(R.id.post_street)
     private val postImage: ImageView = itemView.findViewById(R.id.post_image)
 
     fun bind(post: PostWithUser) {
@@ -22,7 +23,8 @@ class PostsListHolder(itemView: View, private val data: List<PostWithUser>) :
         userPhone.text = post.user.phone
 
         postDescription.text = post.post.description
-        postLocation.text = post.post.location
+        postCity.text = post.post.city
+        postStreet.text = post.post.street
 
         Picasso.get().load(post.user.imageUrl).into(userImage)
         Picasso.get().load(post.post.image).into(postImage)

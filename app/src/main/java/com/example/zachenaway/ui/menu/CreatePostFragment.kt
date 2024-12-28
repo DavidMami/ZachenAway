@@ -84,7 +84,7 @@ class CreatePostFragment : Fragment() {
 
     private fun isPostValid(): Boolean {
         with(binding) {
-            return postLocationEditText.text.toString().isNotEmpty() &&
+            return postStreetEditText.text.toString().isNotEmpty() &&
                     postDescriptionEditText.text.toString().isNotEmpty() &&
                     postCategoryEditText.text.toString().isNotEmpty() &&
                     postCityAutoComplete.text.toString().isNotEmpty()
@@ -97,8 +97,8 @@ class CreatePostFragment : Fragment() {
         val post = UserModel.instance().getCurrentUserId()?.let {
             Post(
                 id = UUID.randomUUID().toString(),
-                location = binding.postLocationEditText.text.toString(),
                 city = binding.postCityAutoComplete.text.toString(),
+                street = binding.postStreetEditText.text.toString(),
                 description = binding.postDescriptionEditText.text.toString(),
                 category = binding.postCategoryEditText.text.toString(),
                 userId = it,
