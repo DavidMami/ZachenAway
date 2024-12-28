@@ -20,6 +20,7 @@ class EditPostFragment : Fragment() {
     private lateinit var imageLaunchers: ImageHandler
     private var oldPost: Post? = null
 
+    private val city get() = binding?.postCityAutoComplete
     private val location get() = binding?.postLocationEditText
     private val description get() = binding?.postDescriptionEditText
     private val category get() = binding?.postCategoryEditText
@@ -55,6 +56,7 @@ class EditPostFragment : Fragment() {
         arguments?.let {
             oldPost = it.getSerializable(ARG_POST) as Post
 
+            city?.setText(oldPost?.city)
             location?.setText(oldPost?.location)
             description?.setText(oldPost?.description)
             category?.setText(oldPost?.category)
@@ -73,7 +75,8 @@ class EditPostFragment : Fragment() {
     }
 
     private fun isPostValid(): Boolean {
-        return !(location?.text.isNullOrEmpty() ||
+        return !(city?.text.isNullOrEmpty() ||
+                location?.text.isNullOrEmpty() ||
                 description?.text.isNullOrEmpty() ||
                 category?.text.isNullOrEmpty())
     }
@@ -85,6 +88,7 @@ class EditPostFragment : Fragment() {
             Post(
                 oldPost?.id ?: UUID.randomUUID().toString(),
                 location?.text.toString(),
+                city?.text.toString(),
                 description?.text.toString(),
                 category?.text.toString(),
                 it,
