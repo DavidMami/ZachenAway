@@ -74,22 +74,35 @@
                 android:layout_marginStart="32dp"
                 android:text="City"
                 android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/postCityAutoComplete"
+                app:layout_constraintBaseline_toBaselineOf="@+id/postCityInput"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/postCityAutoComplete"
-                android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/postCityInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:ems="10"
-                android:inputType="textPersonName"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/postCityTextView"
-                app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/postImageImageView">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/postCityAutoComplete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:ems="10"
+                    android:inputType="none"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/postStreetTextView"
@@ -112,7 +125,7 @@
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/postStreetTextView"
-                app:layout_constraintTop_toBottomOf="@+id/postCityAutoComplete"
+                app:layout_constraintTop_toBottomOf="@+id/postCityInput"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView

@@ -10,9 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.example.zachenaway.data.CountriesClient.getIsraelCities
 import com.example.zachenaway.data.ImageHandler
 import com.example.zachenaway.data.database.schema.Post
-import com.example.zachenaway.data.getIsraelCities
 import com.example.zachenaway.data.model.UserModel
 import com.example.zachenaway.databinding.FragmentCreatePostBinding
 import com.example.zachenaway.viewmodel.CreatePostViewModel
@@ -37,13 +37,13 @@ class CreatePostFragment : Fragment() {
     ): View {
         _binding = FragmentCreatePostBinding.inflate(inflater, container, false)
 
-        val setCountriesList: (items: List<String>) -> Unit = { cities ->
+        val setCitiesList: (items: List<String>) -> Unit = { cities ->
             val citiesForAutoComplete = cities.toTypedArray().sortedArray()
             (binding.postCityAutoComplete as? MaterialAutoCompleteTextView)?.setSimpleItems(
                 citiesForAutoComplete
             )
         }
-        getIsraelCities(setCountriesList)
+        getIsraelCities(setCitiesList)
 
         initializeVariables()
         addOnClickListeners()

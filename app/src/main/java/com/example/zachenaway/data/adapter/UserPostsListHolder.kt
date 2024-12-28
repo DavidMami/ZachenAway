@@ -12,6 +12,7 @@ import com.example.zachenaway.data.database.schema.Post
 import com.example.zachenaway.data.model.PostModel
 import com.example.zachenaway.ui.menu.UserPageFragmentDirections
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.squareup.picasso.Picasso
 
 class UserPostsListHolder(itemView: View, data: List<Post>) : RecyclerView.ViewHolder(itemView) {
@@ -19,7 +20,7 @@ class UserPostsListHolder(itemView: View, data: List<Post>) : RecyclerView.ViewH
 
     private val category: TextView = itemView.findViewById(R.id.post_category)
     private val description: TextView = itemView.findViewById(R.id.post_description)
-    private val city: TextView = itemView.findViewById(R.id.post_city)
+    private val city: MaterialAutoCompleteTextView = itemView.findViewById(R.id.post_city)
     private val street: TextView = itemView.findViewById(R.id.post_street)
     private val image: ImageView = itemView.findViewById(R.id.post_image)
 
@@ -41,7 +42,7 @@ class UserPostsListHolder(itemView: View, data: List<Post>) : RecyclerView.ViewH
         }
 
         description.text = post.description
-        city.text = post.city
+        city.editableText.text = post.city
         street.text = post.street
         category.text = post.category
 
