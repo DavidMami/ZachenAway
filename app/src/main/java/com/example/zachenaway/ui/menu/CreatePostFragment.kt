@@ -89,7 +89,6 @@ class CreatePostFragment : Fragment() {
         }
     }
 
-
     private fun addOnClickListeners() {
         binding.createPostButton.setOnClickListener {
             if (!isPostValid()) {

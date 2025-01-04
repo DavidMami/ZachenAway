@@ -6,12 +6,15 @@ import com.example.zachenaway.data.model.PostModel
 import com.example.zachenaway.databinding.FragmentEditPostBinding
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.zachenaway.data.CountriesClient.getIsraelCities
 import java.util.UUID
 
 class EditPostFragment : Fragment() {
@@ -20,7 +23,7 @@ class EditPostFragment : Fragment() {
     private lateinit var imageLaunchers: ImageHandler
     private var oldPost: Post? = null
 
-    private val city get() = binding?.postCityAutoComplete
+    private val city get() = binding?.postCityMaterialAutoCompleteTextView
     private val street get() = binding?.postStreetEditText
     private val description get() = binding?.postDescriptionEditText
     private val category get() = binding?.postCategoryEditText
@@ -62,6 +65,30 @@ class EditPostFragment : Fragment() {
             category?.setText(oldPost?.category)
             imageLaunchers.loadImage(oldPost?.image ?: "")
         }
+
+        loadCitiesIntoAutoCompleteTextView()
+    }
+
+    private fun loadCitiesIntoAutoCompleteTextView() {
+        context?.let { safeContext ->
+            getIsraelCities({ cities ->
+                // Check if the fragment is still attached
+                if (isAdded) {
+                    if (cities.isNotEmpty()) {
+                        val adapter = ArrayAdapter(
+                            safeContext,
+                            android.R.layout.simple_dropdown_item_1line,
+                            cities
+                        )
+                        binding?.postCityMaterialAutoCompleteTextView?.setAdapter(adapter)
+                    } else {
+                        Toast.makeText(safeContext, "No cities found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Log.d("CreatePostFragment", "Fragment is not attached to activity")
+                }
+            }, safeContext)
+        }
     }
 
     private fun addOnClickListeners() {
@@ -87,8 +114,8 @@ class EditPostFragment : Fragment() {
         val post = oldPost?.userId?.let {
             Post(
                 oldPost?.id ?: UUID.randomUUID().toString(),
-                street?.text.toString(),
                 city?.text.toString(),
+                street?.text.toString(),
                 description?.text.toString(),
                 category?.text.toString(),
                 it,

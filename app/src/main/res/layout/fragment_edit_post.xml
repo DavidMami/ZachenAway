@@ -82,29 +82,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/takePhotoButton"
                 tools:layout_editor_absoluteY="226dp" />
 
-            <TextView
-                android:id="@+id/postCityTextView"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/postCityTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="City"
-                android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/postCityAutoComplete"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/postCityAutoComplete"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/postCityTextView"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                app:hintEnabled="false"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="false"
+                app:errorIconTint="@color/error"
                 app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/postCityMaterialAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/smokeyWhite"
+                    android:hint="Select City"
+                    android:inputType="none"
+                    android:textAppearance="@style/Theme.MaterialComponents"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/postStreetTextView"
@@ -121,15 +125,13 @@
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="130dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/postStreetTextView"
-                app:layout_constraintTop_toBottomOf="@+id/postCityAutoComplete"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintStart_toStartOf="@+id/postDescriptionTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postCityTextInputLayout" />
 
             <TextView
                 android:id="@+id/postDescriptionTextView"
@@ -149,7 +151,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/postDescriptionTextView"
                 app:layout_constraintTop_toBottomOf="@+id/postStreetEditText" />
 
             <TextView
@@ -170,7 +172,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/postDescriptionTextView"
                 app:layout_constraintTop_toBottomOf="@+id/postDescriptionEditText" />
 
             <Button
