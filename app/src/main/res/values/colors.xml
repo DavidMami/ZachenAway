@@ -24,4 +24,6 @@
 
     <color name="iconNotClicked">#D8D8D8</color>
     <color name="iconClicked">#D8D8D8</color>
+
+    <color name="error">#B00020</color>
 </resources>

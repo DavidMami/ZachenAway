@@ -3,9 +3,11 @@ package com.example.zachenaway.ui.menu
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +18,6 @@ import com.example.zachenaway.data.database.schema.Post
 import com.example.zachenaway.data.model.UserModel
 import com.example.zachenaway.databinding.FragmentCreatePostBinding
 import com.example.zachenaway.viewmodel.CreatePostViewModel
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import java.util.UUID
 
 class CreatePostFragment : Fragment() {
@@ -36,14 +37,6 @@ class CreatePostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCreatePostBinding.inflate(inflater, container, false)
-
-        val setCitiesList: (items: List<String>) -> Unit = { cities ->
-            val citiesForAutoComplete = cities.toTypedArray().sortedArray()
-            (binding.postCityAutoComplete as? MaterialAutoCompleteTextView)?.setSimpleItems(
-                citiesForAutoComplete
-            )
-        }
-        getIsraelCities(setCitiesList)
 
         initializeVariables()
         addOnClickListeners()
@@ -69,8 +62,33 @@ class CreatePostFragment : Fragment() {
                 uploadImageFromGalleryButton,
                 takePhotoButton
             )
+
+            loadCitiesIntoAutoCompleteTextView()
         }
     }
+
+    private fun loadCitiesIntoAutoCompleteTextView() {
+        context?.let { safeContext ->
+            getIsraelCities({ cities ->
+                // Check if the fragment is still attached
+                if (isAdded) {
+                    if (cities.isNotEmpty()) {
+                        val adapter = ArrayAdapter(
+                            safeContext,
+                            android.R.layout.simple_dropdown_item_1line,
+                            cities
+                        )
+                        binding.postCityMaterialAutoCompleteTextView.setAdapter(adapter)
+                    } else {
+                        Toast.makeText(safeContext, "No cities found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Log.d("CreatePostFragment", "Fragment is not attached to activity")
+                }
+            }, safeContext)
+        }
+    }
+
 
     private fun addOnClickListeners() {
         binding.createPostButton.setOnClickListener {
@@ -86,8 +104,8 @@ class CreatePostFragment : Fragment() {
         with(binding) {
             return postStreetEditText.text.toString().isNotEmpty() &&
                     postDescriptionEditText.text.toString().isNotEmpty() &&
-                    postCategoryEditText.text.toString().isNotEmpty() &&
-                    postCityAutoComplete.text.toString().isNotEmpty()
+                    postCityMaterialAutoCompleteTextView.text.toString().isNotEmpty() &&
+                    postCategoryEditText.text.toString().isNotEmpty()
         }
     }
 
@@ -97,7 +115,7 @@ class CreatePostFragment : Fragment() {
         val post = UserModel.instance().getCurrentUserId()?.let {
             Post(
                 id = UUID.randomUUID().toString(),
-                city = binding.postCityAutoComplete.text.toString(),
+                city = binding.postCityMaterialAutoCompleteTextView.text.toString(),
                 street = binding.postStreetEditText.text.toString(),
                 description = binding.postDescriptionEditText.text.toString(),
                 category = binding.postCategoryEditText.text.toString(),

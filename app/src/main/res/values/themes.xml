@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base theme with action bar -->
-    <style name="Theme.ZachenAway" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.ZachenAway" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
         <item name="colorPrimary">#838387</item>

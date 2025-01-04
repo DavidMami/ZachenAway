@@ -1,6 +1,7 @@
 package com.example.zachenaway.data
 
 import android.content.Context
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,7 +12,6 @@ import retrofit2.http.POST
 
 object RetrofitClient {
     private const val BASE_URL = "https://countriesnow.space/api/v0.1/"
-
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -24,31 +24,54 @@ data class Country(
     val country: String,
 )
 
+data class CitiesResponse(
+    val error: Boolean,
+    val msg: String,
+    val data: List<String>
+)
+
 object CountriesClient {
     private val countriesApiService: CountriesApiService by lazy {
         RetrofitClient.retrofit.create(CountriesApiService::class.java)
     }
 
     fun getIsraelCities(callback: (List<String>) -> Unit, context: Context? = null) {
-        val body = Country("israel")
-        val call = this.countriesApiService.getCities(body)
-        call.enqueue(object : Callback<List<String>> {
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
-                if (response.isSuccessful) {
-                    val cities = response.body()
+        val body = Country("Israel")
 
-                    if (cities != null) {
-                        callback(cities)
+        val call = this.countriesApiService.getCities(body)
+
+        call.enqueue(object : Callback<CitiesResponse> {
+            override fun onResponse(
+                call: Call<CitiesResponse>,
+                response: Response<CitiesResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val citiesResponse = response.body()
+
+                    if (citiesResponse != null && !citiesResponse.error) {
+                        // Get the cities list from the 'data' field
+                        val cities = citiesResponse.data
+
+                        Log.d("Cities", cities.toString())
+
+                        if (context != null) {
+                            callback(cities)
+                        } else {
+                            Log.d("Cities", "Fragment is not attached to a context")
+                        }
                     } else {
+                        Log.d("Cities", "Error in response: ${citiesResponse?.msg}")
                         callback(emptyList())
                     }
                 } else {
+                    Log.d("Cities", "Failed to retrieve cities: ${response.message()}")
                     callback(emptyList())
                 }
             }
 
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
-                println("Error: ${t.message}")
+            override fun onFailure(call: Call<CitiesResponse>, t: Throwable) {
+                Log.d("Cities", "Error: ${t.message}")
+                callback(emptyList())
             }
         })
     }
@@ -56,5 +79,5 @@ object CountriesClient {
 
 interface CountriesApiService {
     @POST("countries/cities")
-    fun getCities(@Body country: Country): Call<List<String>>
+    fun getCities(@Body country: Country): Call<CitiesResponse>
 }
