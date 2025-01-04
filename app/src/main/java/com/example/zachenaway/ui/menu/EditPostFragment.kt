@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.zachenaway.data.CountriesClient.getIsraelCities
+import com.example.zachenaway.data.network.CountriesClient.getIsraelCities
 import java.util.UUID
 
 class EditPostFragment : Fragment() {

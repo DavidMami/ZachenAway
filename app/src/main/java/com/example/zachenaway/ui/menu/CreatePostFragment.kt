@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.zachenaway.data.CountriesClient.getIsraelCities
+import com.example.zachenaway.data.network.CountriesClient.getIsraelCities
 import com.example.zachenaway.data.ImageHandler
 import com.example.zachenaway.data.database.schema.Post
 import com.example.zachenaway.data.model.UserModel

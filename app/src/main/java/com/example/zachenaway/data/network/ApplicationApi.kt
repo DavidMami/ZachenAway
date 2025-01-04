@@ -1,4 +1,4 @@
-package com.example.zachenaway.data
+package com.example.zachenaway.data.network
 
 import android.content.Context
 import android.util.Log
@@ -38,7 +38,7 @@ object CountriesClient {
     fun getIsraelCities(callback: (List<String>) -> Unit, context: Context? = null) {
         val body = Country("Israel")
 
-        val call = this.countriesApiService.getCities(body)
+        val call = countriesApiService.getCities(body)
 
         call.enqueue(object : Callback<CitiesResponse> {
             override fun onResponse(
