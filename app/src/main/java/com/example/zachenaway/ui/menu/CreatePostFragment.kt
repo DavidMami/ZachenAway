@@ -1,22 +1,23 @@
 package com.example.zachenaway.ui.menu
 
+import android.content.Context
+import android.graphics.drawable.BitmapDrawable
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.example.zachenaway.data.network.CountriesClient.getIsraelCities
 import com.example.zachenaway.data.ImageHandler
 import com.example.zachenaway.data.database.schema.Post
 import com.example.zachenaway.data.model.UserModel
 import com.example.zachenaway.databinding.FragmentCreatePostBinding
 import com.example.zachenaway.viewmodel.CreatePostViewModel
-
-import android.content.Context
-import android.graphics.drawable.BitmapDrawable
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.squareup.picasso.Picasso
 import java.util.UUID
 
 class CreatePostFragment : Fragment() {
@@ -61,6 +62,30 @@ class CreatePostFragment : Fragment() {
                 uploadImageFromGalleryButton,
                 takePhotoButton
             )
+
+            loadCitiesIntoAutoCompleteTextView()
+        }
+    }
+
+    private fun loadCitiesIntoAutoCompleteTextView() {
+        context?.let { safeContext ->
+            getIsraelCities({ cities ->
+                // Check if the fragment is still attached
+                if (isAdded) {
+                    if (cities.isNotEmpty()) {
+                        val adapter = ArrayAdapter(
+                            safeContext,
+                            android.R.layout.simple_dropdown_item_1line,
+                            cities
+                        )
+                        binding.postCityMaterialAutoCompleteTextView.setAdapter(adapter)
+                    } else {
+                        Toast.makeText(safeContext, "No cities found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Log.d("CreatePostFragment", "Fragment is not attached to activity")
+                }
+            }, safeContext)
         }
     }
 
@@ -76,8 +101,9 @@ class CreatePostFragment : Fragment() {
 
     private fun isPostValid(): Boolean {
         with(binding) {
-            return postLocationEditText.text.toString().isNotEmpty() &&
+            return postStreetEditText.text.toString().isNotEmpty() &&
                     postDescriptionEditText.text.toString().isNotEmpty() &&
+                    postCityMaterialAutoCompleteTextView.text.toString().isNotEmpty() &&
                     postCategoryEditText.text.toString().isNotEmpty()
         }
     }
@@ -88,7 +114,8 @@ class CreatePostFragment : Fragment() {
         val post = UserModel.instance().getCurrentUserId()?.let {
             Post(
                 id = UUID.randomUUID().toString(),
-                location = binding.postLocationEditText.text.toString(),
+                city = binding.postCityMaterialAutoCompleteTextView.text.toString(),
+                street = binding.postStreetEditText.text.toString(),
                 description = binding.postDescriptionEditText.text.toString(),
                 category = binding.postCategoryEditText.text.toString(),
                 userId = it,

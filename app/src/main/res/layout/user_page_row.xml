@@ -66,15 +66,26 @@
                 card_view:layout_constraintTop_toBottomOf="@+id/post_category" />
 
             <TextView
-                android:id="@+id/post_location"
+                android:id="@+id/post_city"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginEnd="16dp"
-                android:text="Location"
+                android:text="City"
                 card_view:layout_constraintTop_toBottomOf="@+id/post_description"
                 card_view:layout_constraintStart_toEndOf="@+id/post_image" />
+
+            <TextView
+                android:id="@+id/post_street"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="16dp"
+                android:text="Street"
+                card_view:layout_constraintTop_toBottomOf="@+id/post_description"
+                card_view:layout_constraintStart_toEndOf="@+id/post_city" />
 
             <ImageButton
                 android:id="@+id/post_edit_button"

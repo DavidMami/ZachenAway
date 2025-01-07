@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,18 +82,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/takePhotoButton"
                 tools:layout_editor_absoluteY="226dp" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/postCityTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                app:hintEnabled="false"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="false"
+                app:errorIconTint="@color/error"
+                app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/postCityMaterialAutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/smokeyWhite"
+                    android:hint="Select City"
+                    android:inputType="none"
+                    android:textAppearance="@style/Theme.MaterialComponents"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
-                android:id="@+id/postLocationTextView"
+                android:id="@+id/postStreetTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:text="Location"
+                android:text="Street"
                 android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/postLocationEditText"
+                app:layout_constraintBaseline_toBaselineOf="@+id/postStreetEditText"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/postLocationEditText"
+                android:id="@+id/postStreetEditText"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="130dp"
@@ -101,9 +130,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postImageImageView"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintStart_toStartOf="@+id/postDescriptionTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postCityTextInputLayout" />
 
             <TextView
                 android:id="@+id/postDescriptionTextView"
@@ -123,9 +151,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postLocationEditText" />
-
+                app:layout_constraintStart_toStartOf="@+id/postDescriptionTextView"
+                app:layout_constraintTop_toBottomOf="@+id/postStreetEditText" />
 
             <TextView
                 android:id="@+id/postCategoryTextView"
@@ -145,7 +172,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/postDescriptionTextView"
                 app:layout_constraintTop_toBottomOf="@+id/postDescriptionEditText" />
 
             <Button

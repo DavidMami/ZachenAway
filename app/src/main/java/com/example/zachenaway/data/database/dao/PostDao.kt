@@ -14,8 +14,8 @@ interface PostDao {
     @Query("SELECT * FROM Post WHERE id = :postId")
     fun getPostById(postId: String): Post?
 
-    @Query("SELECT * FROM Post WHERE location = :location")
-    fun getPostsByLocation(location: String): List<Post>
+    @Query("SELECT * FROM Post WHERE city = :city")
+    fun getPostsByCity(city: String): List<Post>
 
     @Transaction
     @Query("SELECT * FROM Post")
